@@ -1,3 +1,5 @@
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/stefan931025-sys/discretionary-valuation-engine)
+
 # Discretionary Asset Valuation & Stock Pitch Engine
 
 ## Overview
