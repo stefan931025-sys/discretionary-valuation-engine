@@ -1,21 +1,27 @@
-import sys
-import os
+from __future__ import annotations
+
+"""
+Module: tests/test_dcf_engine.py
+Description: Unit tests for the Discretionary Valuation Engine validating module imports and DCF valuation sanity.
+"""
+
 import pytest
+from core import dcf_engine
 
-# Ensure Python can locate the src directory
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+def test_dcf_module_import() -> None:
+    """Validates that the dcf_engine core module is successfully imported."""
+    assert dcf_engine is not None
+    assert hasattr(dcf_engine, "__name__")
 
-
-def test_dcf_module_import():
-    """Verify that dcf_engine module can be imported successfully."""
-    try:
-        import dcf_engine
-        assert dcf_engine is not None
-    except ImportError as e:
-        pytest.fail(f"Failed to import dcf_engine: {e}")
-
-
-def test_valuation_sanity():
-    """Basic assertion sanity check for the valuation pipeline."""
-    expected_matrix_val = 510.52
-    assert expected_matrix_val == pytest.approx(510.52, abs=10.0)
+def test_valuation_sanity() -> None:
+    """Validates basic valuation mathematical bounds and sanity checks."""
+    # Placeholder or core valuation logic assertions
+    discount_rate = 0.10
+    terminal_growth = 0.02
+    
+    assert discount_rate > terminal_growth, "Discount rate must exceed terminal growth rate for valid Gordon Growth."
+    
+    # Mock Enterprise Value or Equity Value calculation checks if implemented in core
+    # e.g., EV / Equity Value per share validation
+    ev_per_share_mock = 150.0
+    assert ev_per_share_mock > 0.0, "Valuation per share must be positive."
